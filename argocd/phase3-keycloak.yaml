@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: phase3-keycloak
+  namespace: openshift-gitops
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/tavisirbu2310/hcc-lab-gitops
+    targetRevision: main
+    path: phase3-keycloak
+  destination:
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
