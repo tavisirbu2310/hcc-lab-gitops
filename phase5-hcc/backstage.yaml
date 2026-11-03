@@ -1,0 +1,39 @@
+apiVersion: rhdh.redhat.com/v1alpha5
+kind: Backstage
+metadata:
+  name: developer-hub
+  namespace: ibmc-hcc-ns
+spec:
+  database:
+    enableLocalDb: true
+  application:
+    replicas: 1
+    appConfig:
+      mountPath: /opt/app-root/src
+      configMaps:
+        - name: lab-app-config
+    dynamicPluginsConfigMapName: lab-dynamic-plugins
+    route:
+      enabled: true
+      host: hcc-lab.apps.hcc.test-lab.click
+    extraEnvs:
+      secrets:
+        - name: rhdh-secret
+      envs:
+        - name: NODE_EXTRA_CA_CERTS
+          value: /opt/app-root/src/certs/ingress-ca.crt
+    extraFiles:
+      mountPath: /opt/app-root/src/certs
+      secrets:
+        - name: ingress-ca
+          key: ingress-ca.crt
+  deployment:
+    patch:
+      spec:
+        template:
+          spec:
+            volumes:
+              - $patch: replace
+                name: dynamic-plugins-root
+                persistentVolumeClaim:
+                  claimName: dynamic-plugins-hcc-new
