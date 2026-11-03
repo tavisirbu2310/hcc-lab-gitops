@@ -25,6 +25,13 @@ data:
               frequency: { minutes: 5 }
               timeout: { minutes: 2 }
               initialDelay: { seconds: 15 }
+        github:
+          lab:
+            organization: tavi-hcc-lab
+            catalogPath: /catalog-info.yaml
+            schedule:
+              frequency: { minutes: 10 }
+              timeout: { minutes: 3 }
     auth:
       environment: production
       session:
