@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: phase4-hcc-namespace
+  namespace: openshift-gitops
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/tavisirbu2310/hcc-lab-gitops
+    targetRevision: main
+    path: phase4-hcc-namespace
+  destination:
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

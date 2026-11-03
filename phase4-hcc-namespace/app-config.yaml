@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: lab-app-config
+  namespace: ibmc-hcc-ns
+data:
+  app-config.yaml: |
+    app:
+      title: HCC Lab
+      baseUrl: https://hcc-lab.apps.hcc.test-lab.click
+    backend:
+      baseUrl: https://hcc-lab.apps.hcc.test-lab.click
+      cors:
+        origin: https://hcc-lab.apps.hcc.test-lab.click
+    auth:
+      environment: production
+      session:
+        secret: ${SESSION_SECRET}
+      providers:
+        oidc:
+          production:
+            metadataUrl: https://keycloak.apps.hcc.test-lab.click/realms/hcc-realm
+            clientId: ${KEYCLOAK_CLIENT_ID}
+            clientSecret: ${KEYCLOAK_CLIENT_SECRET}
+            prompt: auto
+            signIn:
+              resolvers:
+                - resolver: oidcSubClaimMatchingKeycloakUserId
+    signInPage: oidc
+    integrations:
+      github:
+        - host: github.com
+          apps:
+            - appId: ${GITHUB_APP_APP_ID}
+              clientId: ${GITHUB_APP_CLIENT_ID}
+              clientSecret: ${GITHUB_APP_CLIENT_SECRET}
+              privateKey: ${GITHUB_APP_PRIVATE_KEY}
