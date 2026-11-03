@@ -7,4 +7,6 @@ data:
   dynamic-plugins.yaml: |
     includes:
       - dynamic-plugins.default.yaml
-    plugins: []
+    plugins:
+      - package: oci://registry.access.redhat.com/rhdh/backstage-community-plugin-catalog-backend-module-keycloak@sha256:f23b5ad4399e21985710941b81b356c148675a5abe8f03a390709e4d18249be9
+        disabled: false

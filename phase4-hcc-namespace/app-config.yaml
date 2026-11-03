@@ -12,6 +12,19 @@ data:
       baseUrl: https://hcc-lab.apps.hcc.test-lab.click
       cors:
         origin: https://hcc-lab.apps.hcc.test-lab.click
+    catalog:
+      providers:
+        keycloakOrg:
+          default:
+            baseUrl: https://keycloak.apps.hcc.test-lab.click
+            loginRealm: hcc-realm
+            realm: hcc-realm
+            clientId: ${KEYCLOAK_CLIENT_ID}
+            clientSecret: ${KEYCLOAK_CLIENT_SECRET}
+            schedule:
+              frequency: { minutes: 5 }
+              timeout: { minutes: 2 }
+              initialDelay: { seconds: 15 }
     auth:
       environment: production
       session:
