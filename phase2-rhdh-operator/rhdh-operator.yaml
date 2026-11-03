@@ -8,9 +8,7 @@ kind: OperatorGroup
 metadata:
   name: rhdh-operatorgroup
   namespace: rhdh-operator
-spec:
-  targetNamespaces:
-    - rhdh-operator
+spec: {}
 ---
 apiVersion: operators.coreos.com/v1alpha1
 kind: Subscription
