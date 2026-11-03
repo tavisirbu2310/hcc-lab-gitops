@@ -1,0 +1,46 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: keycloak
+  namespace: keycloak
+spec:
+  host: keycloak.apps.hcc.test-lab.click
+  to:
+    kind: Service
+    name: keycloak-service
+  port:
+    targetPort: https
+  tls:
+    termination: reencrypt
+    insecureEdgeTerminationPolicy: Redirect
+    destinationCACertificate: |
+      -----BEGIN CERTIFICATE-----
+      MIIFJzCCAw+gAwIBAgIJAPMexqD6IZf/MA0GCSqGSIb3DQEBCwUAMCsxKTAnBgNV
+      BAMMIGtleWNsb2FrLmFwcHMuaGNjLnRlc3QtbGFiLmNsaWNrMB4XDTI2MTEwMzEw
+      Mzc0N1oXDTI3MTEwMzEwMzc0N1owKzEpMCcGA1UEAwwga2V5Y2xvYWsuYXBwcy5o
+      Y2MudGVzdC1sYWIuY2xpY2swggIiMA0GCSqGSIb3DQEBAQUAA4ICDwAwggIKAoIC
+      AQDNiHZ40dmEWeofl8rfFgZ/QHn0ZTBUXlr78ez+Zmz4yBe+rCJazAR6AW/wogH9
+      LFb2JS4w91OJVqs7XdRgrmSuEB1EYM7ysEYAgs3Tp36T561b6d8iy/igVP+yYQ77
+      HtiEpCx+x2O2sAs9+xacoijyJJDK8ZClw5qwZZVii9k+g7KXgf2fZIPP6Hp4yc0O
+      CIF5K+k6okkQPiqibF9irdIFyH0HYCcSipNq3t/tkdI9lyfvN0yT0qpr9XlKvSKS
+      2TORE6LEX4GESj6ELqQYXkCVKl6D7qO/pizz3ZDN8M/Stx4xTS+RcRrCYIQOmlW+
+      we4Ns6WRT5H2eaRlKPW6SGDOmKlNtNiBoNBpDKT6J8KqMLLlGd1RCFnjLDUkxbSp
+      kxJsFSOR0JpVicfwO/oX9IMTa/gaXsQXPPuWpCHL1bv6zRJN0k6FXdy+b9HX5BRX
+      4cGQEQRLImT2QBFFsQWjSqN/5YYRtxXSdWG0PJFqd3GNbrIOHp18Cs1RY1R6q9AZ
+      rWotC86nTptX510aUCb/AlULUhy7n1I5PMtb/nahDKE4adRKD9H8QKNfLYaGoAze
+      9tKWqL0fwUoSzuANR2KZCz2lZd8oMacaiVv/M3btREkxd5jS9vv5RPAJnBF1YP22
+      w9nKQPUvNZE+4CqQkFDJafeyhHBTY/B8jSodRuuNS8vmVwIDAQABo04wTDBKBgNV
+      HREEQzBBgiBrZXljbG9hay5hcHBzLmhjYy50ZXN0LWxhYi5jbGlja4Ida2V5Y2xv
+      YWstc2VydmljZS5rZXljbG9hay5zdmMwDQYJKoZIhvcNAQELBQADggIBAMN9Ikc1
+      vsqc5JJTLPFgKgHoeZooKam1NgTet7jBH/kTbCU09Ips+vQiYaUAUG2AcOF/gcTR
+      UN71EDZqd/AIdf3qWq4XXkwoj8KkAvcNXODIDGjfkaaTTqcySAN6yzPGB30F8y8k
+      gvt12hEkrTAq8wgru9h1tTKs3yrZf6mc/I3TBys1M2YtcTu/gRqahbt6yCpCXvtf
+      Q/VHTcnyhIpxWUU8mypX6NepvhUOgZpHLCTS9d6v/vo3fXY7+rKWxYfSXZL5c/bs
+      eODcF5oZ/5ykFR5kE7vMReyb+PKycxyOjcdI1bEu7fLWcOpGEB7leAU9P6/8qGdb
+      5prEbfrRAbOi236+ujuHpceVGJTkkTj3OD+VxM3kUlCferyED8gZAGCq8Pz1Sbdd
+      ASSmlRBcoSMP0GewvYWdpuBcKHhbocN0RdInakj1r+c7rHLRpcCxM2BSJi4/BvaA
+      AUxiusz/uleVNoi3EyByhrUrveuD8lB30Ygd8dnrerzrXcuIjZLIMbm3Dio8auM5
+      FJXC8lF/4c0fb/Ag3f2KXtQgRiDwwLrtxINRYx943cjPJdITBdgeT0Ba8X6RY+6g
+      yi3gghXE9taFY7ETk9b+uM7HqK66a2Ycjzl6WdGJW9yrbIfUAFAI308q4tafFs0S
+      /wQzJtQOJw2dvHrcu8NiZDJwlmYtU2F0Cm9T
+      -----END CERTIFICATE-----
